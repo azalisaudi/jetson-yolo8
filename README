@@ -1,2 +1,51 @@
 Setting up YOLOv8 on Jetson Nano
 
+Install Jetpack 4.6 (L4T 32.6.1) on Jetson Nano in advance.
+
+STEP 1:
+Install the required packages.
+
+sudo apt update
+sudo apt install -y python3.8 python3.8-venv python3.8-dev python3-pip \
+libopenmpi-dev libomp-dev libopenblas-dev libblas-dev libeigen3-dev libcublas-dev
+
+STEP 2:
+Clone the YOLOv8 repository.
+
+git clone https://github.com/ultralytics/ultralytics
+cd ultralytics
+
+STEP 3:
+Create a Python 3.8 virtual environment using venv.
+
+python3.8 -m venv venv
+source venv/bin/activate
+
+STEP 4:
+Update Python packages not specified in YOLOv8.
+
+pip install -U pip wheel gdown
+
+STEP 5:
+Download and install the pre-built PyTorch, TorchVision package. This package was built using the method described in this article. This article also uses the pre-built package.
+
+# pytorch 1.11.0
+gdown https://drive.google.com/uc?id=1hs9HM0XJ2LPFghcn7ZMOs5qu5HexPXwM
+# torchvision 0.12.0
+gdown https://drive.google.com/uc?id=1m0d8ruUY8RvCP9eVjZw4Nc8LAwM8yuGV
+python3.8 -m pip install torch-*.whl torchvision-*.whl
+
+
+STEP 6:
+Install the Python package for YOLOv8.
+
+pip install .
+
+STEP 7:
+Execute object detection.
+
+yolo task=detect mode=predict model=yolov8n.pt source=0 show=True
+yolo task=segment mode=predict model=yolov8n-seg.pt source=0 show=True
+
+
+g00D 1ucK
