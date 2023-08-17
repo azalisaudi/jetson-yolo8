@@ -4,10 +4,11 @@ Install Jetpack 4.6 (L4T 32.6.1) on Jetson Nano in advance.
 
 STEP 1:
 Install the required packages.
-
+...
 sudo apt update
 sudo apt install -y python3.8 python3.8-venv python3.8-dev python3-pip \
 libopenmpi-dev libomp-dev libopenblas-dev libblas-dev libeigen3-dev libcublas-dev
+...
 
 STEP 2:
 Clone the YOLOv8 repository.
